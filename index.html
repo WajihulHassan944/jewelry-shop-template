@@ -311,47 +311,87 @@
         <!-- slider section ends -->
         <!-- banner section starts -->
         <section class="banner_section banner_black">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="#"><img src="images/banner/bg-1.jpg" alt="banner1"></a>
-                                <div class="banner_content">
-                                    <p>New Design</p>
-                                    <h2 id="dateItem1">December 12,2022</h2>
-                                    <span id="priceItem1">Price $1 </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="#"><img src="images/banner/bg-2.jpg" alt="banner2"></a>
-                                <div class="banner_content">
-                                    <p>Bestselling Rings</p>
-                                    <h2 id="dateItem2">December 15,2022</h2>
-                                    <span id="priceItem2">Price $2 </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single_banner">
-                            <div class="banner_thumb">
-                                <a href="#"><img src="images/banner/bg-3.jpg" alt="banner3"></a>
-                                <div class="banner_content">
-                                    <p>Featured Rings</p>
-                                    <h2 id="dateItem3">December 20,2022</h2>
-                                    <span id="priceItem3">Price $3 </span>
-                                </div>
-                            </div>
+    <div class="container">
+        <div class="row">
+            <!-- Item 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="single_banner">
+                    <div class="banner_thumb">
+                        <a href="#"><img src="images/banner/bg-1.jpg" alt="banner1"></a>
+                        <div class="banner_content">
+                            <p>New Design</p>
+                            <h2 id="dateItem1">December 12, 2023</h2>
+                            <span id="priceItem1">Price $1</span><br>
+                            <span id="timerItem1"> </span> <!-- Countdown timer will be displayed here -->
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <!-- Item 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="single_banner">
+                    <div class="banner_thumb">
+                        <a href="#"><img src="images/banner/bg-2.jpg" alt="banner2"></a>
+                        <div class="banner_content">
+                            <p>Bestselling Rings</p>
+                            <h2 id="dateItem2">December 15, 2022</h2>
+                            <span id="priceItem2">Price $2</span><br>
+                            <span id="timerItem2"> </span> <!-- Countdown timer will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="single_banner">
+                    <div class="banner_thumb">
+                        <a href="#"><img src="images/banner/bg-3.jpg" alt="banner3"></a>
+                        <div class="banner_content">
+                            <p>Featured Rings</p>
+                            <h2 id="dateItem3">December 20, 2022</h2>
+                            <span id="priceItem3">Price $3</span><br>
+                            <span id="timerItem3"> </span> <!-- Countdown timer will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // Function to update the countdown timer
+    function updateCountdownTimer(dateString, timerId) {
+        var endDate = new Date(dateString);
+        var currentDate = new Date();
+        var timeRemaining = endDate - currentDate;
+
+        if (timeRemaining > 0) {
+            var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            var countdown = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+            document.getElementById(timerId).innerText = countdown;
+        } else {
+            // Handle the case when the countdown expires
+            document.getElementById(timerId).innerText = "Expired";
+        }
+    }
+
+    // Call the function for each item
+    updateCountdownTimer('December 12, 2023', 'timerItem1');
+    updateCountdownTimer('December 15, 2022', 'timerItem2');
+    updateCountdownTimer('December 20, 2022', 'timerItem3');
+
+    // Update the countdown timer at regular intervals (e.g., every second)
+    setInterval(function () {
+        updateCountdownTimer('December 12, 2023', 'timerItem1');
+        updateCountdownTimer('December 15, 2022', 'timerItem2');
+        updateCountdownTimer('December 20, 2022', 'timerItem3');
+    }, 1000);
+</script>
+
 		<script>
     // Function to calculate the price based on the provided date and current date
     function calculatePrice(dateString, priceId) {
@@ -364,7 +404,7 @@
 }
 
     // Call the function for each item
-    calculatePrice('December 12, 2022', 'priceItem1');
+    calculatePrice('December 12, 2023', 'priceItem1');
     calculatePrice('December 15, 2022', 'priceItem2');
     calculatePrice('December 20, 2022', 'priceItem3');
 </script>

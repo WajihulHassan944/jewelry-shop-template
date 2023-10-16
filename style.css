@@ -1214,9 +1214,9 @@ ul {
   transform: scale(1.1);
 }
 .banner_content {
-  position: absolute;
+/*  position: absolute;
   top: 25px;
-  left: 25px;
+  left: 25px;   */
 }
 
 .banner_content p {
